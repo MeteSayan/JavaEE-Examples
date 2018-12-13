@@ -2,12 +2,16 @@ package com.sayfalar;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sayfalar.model.Personel;
 
 @WebServlet("/Anasayfa")
 public class Anasayfa extends HttpServlet {
@@ -22,7 +26,9 @@ public class Anasayfa extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		ServletContext context = this.getServletContext();
+		
+		ArrayList<Personel> perlist = (ArrayList<Personel>)context.getAttribute("liste");
 		
 		PrintWriter writer = response.getWriter();
 		response.setContentType("text/html");
@@ -32,8 +38,9 @@ public class Anasayfa extends HttpServlet {
 		
 		writer.append("<body>");
 		
-		writer.append("<h1>Servlet ile ilk Web Sayfam</h1>");
+		writer.append("<h1>Servlet sayfasina hosgeldiniz.</h1>");
 		
+		writer.append("Listedeki Personel Sayimiz : "+perlist.size());
 		writer.append("</body>");
 		
 		writer.append("</html>");

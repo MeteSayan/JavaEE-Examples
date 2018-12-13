@@ -28,10 +28,42 @@
 	if(hataDurum){
 		
 		if(request.getAttribute("adi_errors") != null){
-			String adi = (String)request.getAttribute("adi_errors");
+			String adiHata = (String)request.getAttribute("adi_errors");
 			%>
-				<div class="alert alert-danger"><% out.println(adi); %> </div>
+				<div class="alert alert-danger"><% out.println(adiHata); %> </div>
 			<% 	
+		}
+		
+		if(request.getAttribute("soyadi_errors") != null){
+			String soyadiHata = (String)request.getAttribute("soyadi_errors");
+			%>
+				<div class="alert alert-danger"><% out.println(soyadiHata); %> </div>
+			<% 	
+			
+		}
+		
+		if(request.getAttribute("tcno_errors") != null){
+			String tcnoHata = (String)request.getAttribute("tcno_errors");
+			%>
+				<div class="alert alert-danger"><% out.println(tcnoHata); %> </div>
+			<% 	
+			
+		}
+		
+		if(request.getAttribute("okul_errors") != null){
+			String okulHata = (String)request.getAttribute("okul_errors");
+			%>
+				<div class="alert alert-danger"><%= okulHata %> </div>
+			<% 	
+			
+		}
+		
+		if(request.getAttribute("yas_errors") != null){
+			String yasHata = (String)request.getAttribute("yas_errors");
+			%>
+				<div class="alert alert-danger"><%= yasHata %> </div>
+			<% 	
+			
 		}
 		
 	
@@ -44,7 +76,7 @@
 			<label>Adınız :</label>
 		</div>
 		<div class = "col-md-8">
-			<input type = "text" name = "adi" class="form-control"/>
+			<input type = "text" name = "adi" value = "<%= (String)request.getAttribute("adiniz") != null ? (String)request.getAttribute("adiniz") : "" %> " class="form-control"/>
 		</div>
 	</div>
 	
@@ -53,7 +85,7 @@
 			<label>Soyadınız :</label>
 		</div>
 		<div class = "col-md-8">
-			<input type = "text" name = "soyadi" class="form-control"/>
+			<input type = "text" name = "soyadi" value = "<%= (String)request.getAttribute("soyadiniz") != null ? (String)request.getAttribute("soyadiniz") : "" %> " class="form-control"/>
 		</div>
 	</div>
 	
@@ -62,7 +94,7 @@
 			<label>TC Numarası:</label>
 		</div>
 		<div class = "col-md-8">
-			<input type = "text" name = "tc" class="form-control" />
+			<input type = "text" name = "tc" value = "<%= (String)request.getAttribute("tcnumarasi") != null ? (String)request.getAttribute("tcnumarasi") : "" %> " class="form-control" />
 		</div>
 	</div>
 	
@@ -71,7 +103,7 @@
 			<label>Okul :</label>
 		</div>
 		<div class = "col-md-8">
-			<input type = "text" name = "okul" class="form-control">
+			<input type = "text" name = "okul" value = "<%= (String)request.getAttribute("okulunuz") != null ? (String)request.getAttribute("okulunuz") : "" %> " class="form-control">
 		</div>
 	</div>
 	
@@ -81,13 +113,17 @@
 		</div>
 		
 		<div class = "col-md-8">
-			<input type = "text" name="yas" class="form-control" />
+			<input type = "text" name="yas" value = "<%= (String)request.getAttribute("yasiniz") != null ? (String)request.getAttribute("yasiniz") : "" %> " class="form-control" />
 		</div>
 	</div>
 	
 	<div class = "row">
-		<div class = "col-md-3">
+		<div class = "col-md-2">
 			<input type = "submit" value="Kaydet" class="btn btn-lg btn-success"/>
+		</div>
+		
+		<div class = "col-md-2">
+			<input type = "reset" value="Temizle" class="btn btn-lg btn-danger"/>
 		</div>
 	
 	</div>
